@@ -1,0 +1,21 @@
+{
+    "name": "grantlucas/clockify-cli",
+    "description": "CLI application for interacting with Clockify",
+    "type": "project",
+    "require": {
+        "symfony/console": "^5.1",
+        "jdecool/clockify-api": "dev-master",
+        "php-http/guzzle6-adapter": "^1.0",
+        "vlucas/phpdotenv": "^5.0"
+    },
+    "require-dev": {
+        "phan/phan": "^3.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Grant Lucas",
+            "email": "contact@grantlucas.com"
+        }
+    ]
+}
