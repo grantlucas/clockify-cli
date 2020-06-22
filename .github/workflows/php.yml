@@ -16,7 +16,7 @@ jobs:
 
     - name: Validate composer.json and composer.lock
       run: composer validate
-      
+
     - name: Cache Composer packages
       id: composer-cache
       uses: actions/cache@v2
@@ -36,6 +36,6 @@ jobs:
     # - name: Run test suite
     #   run: composer run-script test
     - name: CodeSniffer
-      run: composer cs
+      run: composer run cs
     - name: Phan
-      run: composer phan-quiet
+      run: composer run phan-quiet
