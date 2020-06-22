@@ -18,5 +18,16 @@
             "name": "Grant Lucas",
             "email": "contact@grantlucas.com"
         }
-    ]
+    ],
+    "scripts": {
+        "cs": [
+            "./vendor/bin/phpcs"
+        ],
+        "phan": [
+            "./vendor/bin/phan --progress-bar --color"
+        ],
+        "phan-quiet": [
+            "./vendor/bin/phan --no-progress-bar"
+        ]
+    }
 }
