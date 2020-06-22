@@ -11,8 +11,34 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    env:
+      extensions: ast
+      key: cache-v1
+
     steps:
     - uses: actions/checkout@v2
+
+
+    - name: Setup cache environment
+      id: extcache
+      uses: shivammathur/cache-extensions@v1
+      with:
+        php-version: '7.4'
+        extensions: ${{ env.extensions }}
+        key: ${{ env.key }}
+
+    - name: Cache extensions
+      uses: actions/cache@v2
+      with:
+        path: ${{ steps.extcache.outputs.dir }}
+        key: ${{ steps.extcache.outputs.key }}
+        restore-keys: ${{ steps.extcache.outputs.key }}
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '7.4'
+        extensions: ${{ env.extensions }}
 
     - name: Validate composer.json and composer.lock
       run: composer validate
