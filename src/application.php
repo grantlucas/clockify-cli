@@ -50,7 +50,8 @@ if (empty($_ENV['CLOCKIFY_WORKSPACE'])) {
     }
 }
 
-// Register Timer Start command
+// Register Commands
 $application->add(new App\Commands\TimerStartCommand($clockifyClient));
+$application->add(new App\Commands\TimerCurrentCommand($clockifyClient));
 
 $application->run();
