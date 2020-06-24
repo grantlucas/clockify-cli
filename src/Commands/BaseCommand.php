@@ -40,7 +40,9 @@ abstract class BaseCommand extends Command
     protected function getCurrentTimer(): array
     {
         // FIXME: Somehow cache this result as the current user rarely changes
-        // and we can save an API hit.
+        // and we can save an API hit. Look into object caching libraries like
+        // the [Symfony cache component](https://symfony.com/doc/current/components/cache.html)
+
         // Get current user so the ID can be used in subsequent requests
         $currentUser = $this->clockifyClient->get('user');
 
