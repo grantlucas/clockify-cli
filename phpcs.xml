@@ -5,7 +5,9 @@
 
     <file>src</file>
 
-    <rule ref="PSR12"/>
+    <rule ref="PSR12">
+        <exclude name="Generic.Files.LineLength.TooLong"/>
+    </rule>
 
     <!-- Some Squiz nice to have formatting -->
     <!-- Specifically turn ON checking for extra whitespace in empty lines -->
