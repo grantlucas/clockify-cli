@@ -31,7 +31,10 @@ class TimerStartCommand extends BaseCommand
         $this
             ->setDescription('Start/continue a timer')
             ->setHelp('Start or continue a timer, setting the project and optional tags.')
-            ->setAliases(['t:s']);
+            ->setAliases([
+                't:s',
+                'ts'
+            ]);
 
         // Input arguments
         $this
