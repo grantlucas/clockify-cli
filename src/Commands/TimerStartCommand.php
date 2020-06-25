@@ -184,7 +184,7 @@ class TimerStartCommand extends BaseCommand
 
             $confirmationQuestion = new ConfirmationQuestion(
                 "One project found: <comment>{$projects[$selectedProjectID]}</comment>. Do you wish to continue? (y/N): ",
-                false,
+                false
             );
 
             // Ask if we want to continue. If no, exit the process so the user
@@ -256,7 +256,7 @@ class TimerStartCommand extends BaseCommand
 
             $confirmationQuestion = new ConfirmationQuestion(
                 "One tag found: <comment>{$tags[$selectedTagID]}</comment>. Do you wish to continue? (y/N): ",
-                false,
+                false
             );
 
             // Ask if we want to continue. If no, exit the process so the user
