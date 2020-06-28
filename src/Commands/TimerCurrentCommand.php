@@ -30,7 +30,11 @@ class TimerCurrentCommand extends BaseCommand
         // Basic description and help text
         $this
             ->setDescription('Current Timer')
-            ->setHelp('Show the current timer with optional short format');
+            ->setHelp('Show the current timer with optional short format')
+            ->setAliases([
+                't:c',
+                'tc',
+            ]);
 
         // Input options
         $this
@@ -48,7 +52,6 @@ class TimerCurrentCommand extends BaseCommand
     {
         // Get the current timer for the current user
         $currentTimer = $this->getCurrentTimer();
-        print_r($currentTimer);
 
         if (empty($currentTimer)) {
             // If there's no current timer, just return a successful response
@@ -56,13 +59,36 @@ class TimerCurrentCommand extends BaseCommand
             return Command::SUCCESS;
         }
 
-        // $outputTemplate =
-        //
-        // When short:
-        // - Shorten project to just AC from AC: Acquisition if `:` is present
-        // - Count tags instead of listing
+        // Set the duration
+        $duration = $currentTimer['calculatedDuration'];
 
-        // TODO: Format output of current timer. Duration - Description - tags
+        // Set/format the project
+        $project = $currentTimer['project']['name'];
+
+        // Set/format the description
+        $desc = $currentTimer['description'];
+
+        // Set/format the tags
+        $tags = '';
+        foreach ($currentTimer['tags'] as $tag) {
+            if ($tags !== '') {
+                $tags .= ', ';
+            }
+
+            $tags .= $tag['name'];
+        }
+
+        // TODO: Support short tag
+        // TODO: Allow number to be set in short tag that's the MAX width of
+        // the entire output
+        // TODO: Simplify duration output if hours are empty
+        // TODO: Set up helper function to "shorten" projects and tags
+        // "intelligently" (use first letters of each word or the letters
+        // before `:` for projects etc)
+
+        // Combine and output summary of current timer
+        $output->writeln("{$duration} - {$project} - {$tags} - {$desc}");
+
         return Command::SUCCESS;
     }
 }

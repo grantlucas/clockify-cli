@@ -33,7 +33,7 @@ class TimerStartCommand extends BaseCommand
             ->setHelp('Start or continue a timer, setting the project and optional tags.')
             ->setAliases([
                 't:s',
-                'ts'
+                'ts',
             ]);
 
         // Input arguments
